@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/share"
+        android:title="Share"
+        android:icon="@drawable/outline_arrow_outward_24"/>
+
+    <item
+        android:id="@+id/rate"
+        android:title="Rate"
+        android:icon="@drawable/outline_award_star_24"/>
+
+    <item
+        android:id="@+id/privacy"
+        android:title="Privacy"
+        android:icon="@drawable/sharp_bath_private_24"/>
+
+</menu>
