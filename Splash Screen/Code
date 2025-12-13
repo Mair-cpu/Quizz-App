@@ -1,0 +1,123 @@
+Splash Screen Java Code 
+
+package com.example.quizz;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.view.Window;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class SplashScreenActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStatusBarColor();
+        setContentView(R.layout.activity_splash_screen);
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        },2000);
+
+    }
+
+    private void setStatusBarColor() {
+        Window window = getWindow();
+        int statusBarColor = ContextCompat.getColor(this,R.color.NavyBlue);
+        window.setStatusBarColor(statusBarColor);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            View decorView = window.getDecorView();
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+}
+
+
+
+
+
+
+Splash Screen Xml code :
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E2C"
+    tools:context=".SplashScreenActivity">
+
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/logo_rem_back"
+        android:contentDescription="App Logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txtAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/txtAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz App"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tagline -->
+    <TextView
+        android:id="@+id/txtTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Your Knowledge"
+        android:textSize="14sp"
+        android:textColor="#B0BEC5"
+        app:layout_constraintTop_toBottomOf="@id/txtAppName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Footer Text -->
+    <TextView
+        android:id="@+id/txtFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Powered by Android Studio"
+        android:textSize="12sp"
+        android:textColor="#90A4AE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
