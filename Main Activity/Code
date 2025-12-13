@@ -1,0 +1,168 @@
+Main Activity Xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:background="@color/NavyBlue"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Menu Icon -->
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/baseline_calendar_view_day_24"
+            app:tint="@color/white"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"/>
+
+        <!-- App Title -->
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quiz App"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@id/menu"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"/>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintVertical_bias="0.0"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ================= NAVIGATION DRAWER ================= -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu"
+        app:headerLayout="@layout/header"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
+
+
+
+
+
+Main Activity Java 
+
+package com.example.quizz;
+
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+
+public class MainActivity extends AppCompatActivity {
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    ImageView menu;
+    View header;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.main);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        menu = findViewById(R.id.menu);
+
+
+        header = navigationView.getHeaderView(0);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }else {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId()==R.id.share){
+                    String shareBody = "Hy, I am Using Best Online Quizz App"+"http://Play.google.com/store/apps/details?id="+MainActivity.this.getPackageName();
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text//plain");
+                    intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                    startActivity(intent);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                else if (item.getItemId()==R.id.rate) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://Play.google.com/store/apps/details?id="+MainActivity.this.getPackageName())));
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                else if (item.getItemId()==R.id.privacy) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("Add Privacy Policy Link for the App")));
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+                return false;
+            }
+        });
+
+    }
+
+
+}
