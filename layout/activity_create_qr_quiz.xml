@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/NavyBlue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Bulk QR Quiz"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/etQuizTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Quiz Title (e.g. Science Quiz)"
+            android:textColor="@color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="#FFEB3B"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="textCapWords" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Questions Added: 0"
+            android:textColor="#FFEB3B"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <EditText
+            android:id="@+id/etQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Question"
+            android:textColor="@color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText android:id="@+id/etOp1" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Option A" android:textColor="@color/white" android:textColorHint="#CCCCCC" android:backgroundTint="@color/white" android:layout_marginBottom="10dp"/>
+        <EditText android:id="@+id/etOp2" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Option B" android:textColor="@color/white" android:textColorHint="#CCCCCC" android:backgroundTint="@color/white" android:layout_marginBottom="10dp"/>
+        <EditText android:id="@+id/etOp3" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Option C" android:textColor="@color/white" android:textColorHint="#CCCCCC" android:backgroundTint="@color/white" android:layout_marginBottom="10dp"/>
+        <EditText android:id="@+id/etOp4" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Option D" android:textColor="@color/white" android:textColorHint="#CCCCCC" android:backgroundTint="@color/white" android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/etCorrectAns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Exact Answer Text"
+            android:textColor="@color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="#FFEB3B"
+            android:layout_marginBottom="25dp"/>
+
+        <Button
+            android:id="@+id/btnAddQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="ADD TO LIST"
+            android:backgroundTint="#4CAF50"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnGenerateQR"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="GENERATE FINAL QR"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/NavyBlue"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/qrCard"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/white"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivQRCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:scaleType="fitCenter"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
