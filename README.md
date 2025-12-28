@@ -79,7 +79,7 @@ new Handler().postDelayed(() -> {
 }, 3000);
 ```
 
-###📍 Dec 23, 2025 — SQLite Database Integration
+### 📍 Dec 23, 2025 — SQLite Database Integration
 
 Work Done:
 
@@ -99,7 +99,7 @@ db.execSQL("CREATE TABLE quizzes (id INTEGER PRIMARY KEY, title TEXT, data TEXT)
 db.execSQL("CREATE TABLE history (id INTEGER PRIMARY KEY, quiz_name TEXT, score TEXT, date TEXT)");
 ```
 
-###📍 Dec 26, 2025 — Category & Adapter System
+### 📍 Dec 26, 2025 — Category & Adapter System
 
 Work Done:
 
@@ -112,7 +112,7 @@ Dynamic data binding
 Logic Explanation:
 RecyclerView efficiently handles large datasets and improves UI performance.
 
-###📍 Dec 28, 2025 (11:46 AM) — Result Calculation Module
+### 📍 Dec 28, 2025 (11:46 AM) — Result Calculation Module
 
 Work Done:
 
@@ -138,7 +138,7 @@ if (percentage >= 50) {
 }
 ```
 
-###📍 Dec 28, 2025 (06:02 PM) — Quiz History Module
+### 📍 Dec 28, 2025 (06:02 PM) — Quiz History Module
 
 Work Done:
 
@@ -165,7 +165,7 @@ while (cursor.moveToNext()) {
 adapter.notifyDataSetChanged();
 ```
 
-###📍 Dec 28, 2025 (07:35 PM) — AI Quiz Assistant (Chatbot)
+### 📍 Dec 28, 2025 (07:35 PM) — AI Quiz Assistant (Chatbot)
 
 Work Done:
 
@@ -196,7 +196,7 @@ private void botReply(String message) {
 }
 ```
 
-###📍 Dec 28, 2025 (07:36 PM) — QR Code & Bulk Quiz Module
+### 📍 Dec 28, 2025 (07:36 PM) — QR Code & Bulk Quiz Module
 
 Work Done:
 
@@ -224,7 +224,7 @@ BitMatrix matrix = writer.encode(
 );
 ```
 
-###🔐 Admin Application Features
+### 🔐 Admin Application Features
 
 Quiz creation and management
 
@@ -236,7 +236,7 @@ Category management
 
 Database storage
 
-###👨‍🎓 User Application Features
+### 👨‍🎓 User Application Features
 
 Quiz attempt system
 
@@ -248,7 +248,7 @@ AI chatbot assistance
 
 QR-based quiz access
 
-###📚 Learning Outcomes
+### 📚 Learning Outcomes
 
 Android application architecture
 
@@ -264,6 +264,6 @@ Basic AI chatbot implementation
 
 Clean UI/UX development
 
-###🏁 Conclusion
+### 🏁 Conclusion
 
 This project demonstrates a strong understanding of Android development, database integration, and logic-driven system design.
