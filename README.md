@@ -1,127 +1,63 @@
-# Quizz-App
+# 🎓 Multi-Platform Quiz Ecosystem (Admin & User)
 
-1st day work 
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg)](https://developer.android.com/)
+[![Backend](https://img.shields.io/badge/Backend-SQLite%20%2F%20MySQL-blue.svg)](https://www.mysql.com/)
 
-Splash Screeen
-This XML layout defines a splash screen for an Android app using ConstraintLayout as the root container, which fills the entire screen with a dark blue-gray background (#1E1E2C) and is linked to SplashScreenActivity. It includes an ImageView for the app logo, sized at 120dp and centered horizontally at the top, referencing a drawable resource with accessibility description. Below it are three TextViews: the first displays the bold white app name "Quiz App" in 26sp font, centered; the second shows the light gray tagline "Test Your Knowledge" in 14sp, also centered; and the third, a small gray footer text "Powered by Android Studio" in 12sp, positioned at the bottom with a 20dp margin, all elements constrained to maintain responsive centering and vertical stacking for a clean, branded display.
+A comprehensive dual-application system designed for real-time quiz generation, cloud synchronization, and AI-driven student assistance.
 
+---
 
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#1E1E2C"
-    tools:context=".SplashScreenActivity">
+## 🛠 Project Evolution & Technical Struggles
 
-    <!-- App Logo -->
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/ic_logo"
-        android:contentDescription="App Logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/txtAppName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+### 1. Firebase Integration (The Initial Attempt)
+Originally, the project was built using **Google Firebase**. 
+* **The Issue:** During testing, we encountered significant **Storage & Pricing constraints**. Managing complex relational data (like multiple options and correct answers for hundreds of quizzes) lead to high document reads and storage overhead.
+* **The Decision:** We decided to pivot to a custom SQL architecture for better control over data structure and costs.
 
-    <!-- App Name -->
-    <TextView
-        android:id="@+id/txtAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quiz App"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+### 2. InfinityFree SQL Transition
+We shifted the backend to **MySQL (hosted on InfinityFree)**.
+* **The Challenge:** Since it is a web-based shared hosting, direct mobile-to-database connectivity was frequently blocked by firewalls or resulted in "Connection Timeout" errors.
+* **The Solution:** We implemented a **PHP API Bridge** and a fallback **Offline-First SQLite** system.
 
-    <!-- Tagline -->
-    <TextView
-        android:id="@+id/txtTagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Your Knowledge"
-        android:textSize="14sp"
-        android:textColor="#B0BEC5"
-        app:layout_constraintTop_toBottomOf="@id/txtAppName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+---
 
-    <!-- Footer Text -->
-    <TextView
-        android:id="@+id/txtFooter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Powered by Android Studio"
-        android:textSize="12sp"
-        android:textColor="#90A4AE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"/>
+## 📅 Development Timeline (Module Completion)
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+| Date | Milestone / Module Developed | Description |
+| :--- | :--- | :--- |
+| **Oct 15, 2025** | **Initial Research** | Project scope and Firebase integration setup. |
+| **Oct 30, 2025** | **Admin UI & Logic** | Quiz creation, Title entry, and StringBuilder logic. |
+| **Nov 10, 2025** | **Database Pivot** | Transition from Firebase to SQLite & MySQL (InfinityFree). |
+| **Nov 25, 2025** | **QR Engine** | Implementation of ZXing library for offline data sharing. |
+| **Dec 05, 2025** | **User Dashboard** | User app interface, Sidebar (Navigation Drawer) implementation. |
+| **Dec 15, 2025** | **AI Chatbot** | Integration of AI assistant for student support. |
+| **Dec 25, 2025** | **Final Polish** | Delete functionality, Error handling, and Final Testing. |
+
+---
+
+## 🚀 Key Features
+
+### 🛠 Admin Application
+- **Dynamic Quiz Creation:** StringBuilder-based question compiling.
+- **SQLite Persistence:** Full CRUD (Create, Read, Update, Delete) locally.
+- **QR Generation:** High-density QR for 100% offline data transfer.
+
+### 📱 User Application
+- **AI Chatbot Integration:** Real-time help for quiz queries.
+- **Sidebar Navigation:** Professional UI for modular access.
+- **QR & Cloud Sync:** Hybrid fetching from both local scans and Cloud APIs.
 
 
 
+---
 
+## ⚙️ How It Works (Architecture)
+1.  **Admin** creates a quiz $\rightarrow$ Data is saved in **Local SQLite**.
+2.  **Admin** generates a **QR Code** or attempts a **Cloud Push**.
+3.  **User** scans the QR or fetches from **InfinityFree API**.
+4.  **User App** parses the string and launches the **Interactive Quiz Engine**.
 
+---
 
-Splash Screen Java Code
-
-package com.example.quizz;
-
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.view.Window;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class SplashScreenActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setStatusBarColor();
-        setContentView(R.layout.activity_splash_screen);
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },2000);
-
-    }
-
-    private void setStatusBarColor() {
-        Window window = getWindow();
-        int statusBarColor = ContextCompat.getColor(this,R.color.NavyBlue);
-        window.setStatusBarColor(statusBarColor);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            View decorView = window.getDecorView();
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
-    }
-}
-
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
