@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "478732224118",
+    "firebase_url": "https://adminquizzz-default-rtdb.firebaseio.com",
+    "project_id": "adminquizzz",
+    "storage_bucket": "adminquizzz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478732224118:android:174a43c3a7c71132b10157",
+        "android_client_info": {
+          "package_name": "com.example.adminquizzz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvYF6WJi8urKk1Hb05wxouM5H7td-D3A8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

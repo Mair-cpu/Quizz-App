@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/NavyBlue">
+
+        <TextView
+            android:id="@+id/tvOnlineQuizTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz Title"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:minHeight="50dp"/>
+
+        <Button
+            android:id="@+id/btnStartOnline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Start Play"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/NavyBlue"
+            android:textAllCaps="false"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

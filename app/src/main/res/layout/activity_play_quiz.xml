@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/NavyBlue"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvQuizTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="QUIZ TITLE"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TextView android:id="@+id/tvQuestionCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Question: 1/10" android:textColor="#FFEB3B" android:textStyle="bold" />
+        <TextView android:id="@+id/tvScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="Score: 0" android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/questionCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#2A2A3D"
+        app:cardCornerRadius="15dp">
+        <TextView android:id="@+id/tvQuestionText" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="25dp" android:gravity="center" android:textColor="@color/white" android:textSize="19sp" android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <Button android:id="@+id/btnOpt1" android:layout_width="match_parent" android:layout_height="55dp" android:layout_marginTop="30dp" android:backgroundTint="@color/white" android:textColor="@color/NavyBlue" android:textAllCaps="false" />
+    <Button android:id="@+id/btnOpt2" android:layout_width="match_parent" android:layout_height="55dp" android:layout_marginTop="10dp" android:backgroundTint="@color/white" android:textColor="@color/NavyBlue" android:textAllCaps="false" />
+    <Button android:id="@+id/btnOpt3" android:layout_width="match_parent" android:layout_height="55dp" android:layout_marginTop="10dp" android:backgroundTint="@color/white" android:textColor="@color/NavyBlue" android:textAllCaps="false" />
+    <Button android:id="@+id/btnOpt4" android:layout_width="match_parent" android:layout_height="55dp" android:layout_marginTop="10dp" android:backgroundTint="@color/white" android:textColor="@color/NavyBlue" android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#FFC107"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="NEXT QUESTION"
+        android:textColor="@color/NavyBlue"
+        android:visibility="gone" />
+
+</LinearLayout>
