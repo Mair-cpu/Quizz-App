@@ -3,14 +3,14 @@ package com.example.quizz;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.quizz.databinding.ActivityUserChatBinding;
+import com.example.quizz.databin    ding.ActivityUserChatBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class UserChatActivity extends AppCompatActivity {
 
-    private ActivityUserChatBinding binding;
+    private com.example.quizz.ActivityUserChatBinding binding;
     private ChatAdapter adapter;
     private List<ChatMessage> messageList = new ArrayList<>();
 
